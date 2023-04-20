@@ -8,7 +8,7 @@ import type { ModelSettings } from "../utils/types";
 import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
-const cloudflareScraper = require("cloudflare-scraper");
+import got from 'cloudflare-scraper';
 
 async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // const completion = await new LLMChain({
