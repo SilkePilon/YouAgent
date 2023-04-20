@@ -8,6 +8,7 @@ import type { ModelSettings } from "../utils/types";
 import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
+const cloudflareScraper = require("cloudflare-scraper");
 
 async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // const completion = await new LLMChain({
@@ -16,6 +17,7 @@ async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // }).call({
   //   goal,
   // });
+  
   const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an autonomous task creation A called AgentGPT. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`)}&key=site`);
   const completion = await response.json();
   console.log("Completion:" + (completion.message as string));

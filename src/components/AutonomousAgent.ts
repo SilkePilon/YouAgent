@@ -294,11 +294,11 @@ const testConnection = async (modelSettings: ModelSettings) => {
 
 const getMessageFromError = (e: unknown) => {
   let message =
-    "ERROR accessing OpenAI APIs. Please check your API key or try again later";
+    "ERROR accessing BetterAPI API's. This can be to a server side rate limit (currently set to 10/min)";
   if (axios.isAxiosError(e)) {
     const axiosError = e;
     if (axiosError.response?.status === 429) {
-      message = `ERROR using your OpenAI API key. You've exceeded your current quota, please check your plan and billing details.`;
+      message = `ERROR using your BetterAPI API key. You've exceeded your current quota, please check your plan and billing details.`;
     }
     if (axiosError.response?.status === 404) {
       message = `ERROR your API key does not have GPT-4 access. You must first join OpenAI's wait-list. (This is different from ChatGPT Plus)`;

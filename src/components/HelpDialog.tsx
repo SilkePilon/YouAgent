@@ -10,10 +10,10 @@ export default function HelpDialog({
   close: () => void;
 }) {
   return (
-    <Dialog header="Welcome to AgentGPT 🤖" isShown={show} close={close}>
+    <Dialog header="Welcome to YouAgent 🤖" isShown={show} close={close}>
       <div className="text-md relative flex-auto p-2 leading-relaxed">
         <p>
-          <strong>AgentGPT</strong> allows you to configure and deploy
+          <strong>YouAgent</strong> allows you to configure and deploy
           Autonomous AI agents. Name your custom AI and have it embark on any
           goal imaginable. It will attempt to reach the goal by thinking of
           tasks to do, executing them, and learning from the results 🚀
@@ -33,7 +33,7 @@ export default function HelpDialog({
           <div
             className="cursor-pointer rounded-full bg-black/30 p-3 hover:bg-black/70"
             onClick={() =>
-              window.open("https://discord.gg/jdSBAnmdnY", "_blank")
+              window.open("https://discord.com/invite/youclub", "_blank")
             }
           >
             <FaDiscord size={30} />
@@ -52,7 +52,7 @@ export default function HelpDialog({
           <div
             className="cursor-pointer rounded-full bg-black/30 p-3 hover:bg-black/70"
             onClick={() =>
-              window.open("https://github.com/reworkd/AgentGPT", "_blank")
+              window.open("https://github.com/SilkePilon/YouAgent", "_blank")
             }
           >
             <FaGithub size={30} />

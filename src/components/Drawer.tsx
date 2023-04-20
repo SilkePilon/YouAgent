@@ -96,7 +96,7 @@ const Drawer = ({
 
             {status === "unauthenticated" && (
               <div>
-                Sign in to be able to save agents and manage your account!
+                YouAgent v0.0.1
               </div>
             )}
             {status === "authenticated" && userAgents.length === 0 && (
@@ -132,7 +132,7 @@ const Drawer = ({
             <DrawerItem
               icon={<FaDiscord size={30} />}
               text="Discord"
-              href="https://discord.gg/jdSBAnmdnY"
+              href="https://discord.com/invite/youclub"
               target="_blank"
               small
             />
@@ -146,7 +146,7 @@ const Drawer = ({
             <DrawerItem
               icon={<FaGithub size={30} />}
               text="GitHub"
-              href="https://github.com/reworkd/AgentGPT"
+              href="https://github.com/SilkePilon/YouAgent"
               target="_blank"
               small
             />

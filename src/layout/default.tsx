@@ -20,11 +20,11 @@ const DefaultLayout = (props: LayoutProps) => {
       )}
     >
       <Head>
-        <title>AgentGPT</title>
+        <title>YouAgent</title>
         <meta name="description" content={description} />
         <meta name="twitter:site" content="@AgentGPT" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AgentGPT 🤖" />
+        <meta name="twitter:title" content="YouAgent 🤖" />
         <meta name="twitter:description" content={description} />
         <meta
           name="twitter:image"
@@ -34,7 +34,7 @@ const DefaultLayout = (props: LayoutProps) => {
         <meta name="twitter:image:height" content="640" />
         <meta
           property="og:title"
-          content="AgentGPT: Autonomous AI in your browser 🤖"
+          content="YouAgent: Autonomous AI in your browser 🤖"
         />
         <meta
           property="og:description"
@@ -48,10 +48,7 @@ const DefaultLayout = (props: LayoutProps) => {
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="640" />
         <meta property="og:type" content="website" />
-        <meta
-          name="google-site-verification"
-          content="sG4QDkC8g2oxKSopgJdIe2hQ_SaJDaEaBjwCXZNkNWA"
-        />
+        
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DottedGridBackground

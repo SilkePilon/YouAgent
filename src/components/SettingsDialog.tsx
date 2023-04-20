@@ -37,6 +37,7 @@ export default function SettingsDialog({
     customMaxLoops,
     setCustomMaxLoops,
   } = reactModelStates;
+  
 
   const [key, setKey] = React.useState<string>(customApiKey);
 
@@ -46,8 +47,7 @@ export default function SettingsDialog({
   };
 
   function is_valid_key(key: string) {
-    const pattern = /^sk-[a-zA-Z0-9]{48}$/;
-    return pattern.test(key);
+    return true
   }
 
   const handleSave = () => {
@@ -56,7 +56,7 @@ export default function SettingsDialog({
       close();
     } else {
       alert(
-        "key is invalid, please ensure that you have set up billing in your OpenAI account"
+        "key is invalid, please try again"
       );
     }
   };
@@ -73,28 +73,7 @@ export default function SettingsDialog({
 
   const advancedSettings = (
     <>
-      <Input
-        left={
-          <>
-            <FaThermometerFull />
-            <span className="ml-2">Temp: </span>
-          </>
-        }
-        value={customTemperature}
-        onChange={(e) => setCustomTemperature(parseFloat(e.target.value))}
-        type="range"
-        toolTipProperties={{
-          message:
-            "Higher values will make the output more random, while lower values make the output more focused and deterministic.",
-          disabled: false,
-        }}
-        attributes={{
-          min: 0,
-          max: 1,
-          step: 0.01,
-        }}
-      />
-      <br />
+      
       <Input
         left={
           <>
@@ -113,7 +92,7 @@ export default function SettingsDialog({
         }}
         attributes={{
           min: 1,
-          max: 100,
+          max: 20,
           step: 1,
         }}
       />
@@ -128,9 +107,7 @@ export default function SettingsDialog({
       footerButton={<Button onClick={handleSave}>Save</Button>}
     >
       <p>
-        Here you can add your OpenAI API key. This will require you to pay for
-        your own OpenAI usage but give you greater access to AgentGPT! You can
-        additionally select any model OpenAI offers.
+        Here you can add your BetterAPI API key.
       </p>
       <br />
       <p
@@ -143,32 +120,19 @@ export default function SettingsDialog({
         <FaExclamationCircle className="inline-block" />
         &nbsp;
         <b>
-          To use the GPT-4 model, you need to also provide the API key for
-          GPT-4. You can request for it&nbsp;
+          This project is based on You.com's&nbsp;
           <a
-            href="https://openai.com/waitlist/gpt-4-api"
+            href="https://you.com"
             className="text-blue-500"
           >
-            here
+          YouChat
           </a>
-          . (ChatGPT Plus subscription will not work)
+          .
         </b>
       </p>
       <br />
       <div className="text-md relative flex-auto p-2 leading-relaxed">
-        <Input
-          left={
-            <>
-              <FaMicrochip />
-              <span className="ml-2">Model:</span>
-            </>
-          }
-          type="combobox"
-          value={customModelName}
-          onChange={() => null}
-          setValue={setCustomModelName}
-          attributes={{ options: GPT_MODEL_NAMES }}
-        />
+        
         <br className="hidden md:inline" />
         <Input
           left={
@@ -177,7 +141,7 @@ export default function SettingsDialog({
               <span className="ml-2">Key: </span>
             </>
           }
-          placeholder={"sk-..."}
+          placeholder={"..."}
           value={key}
           onChange={(e) => setKey(e.target.value)}
         />
@@ -188,10 +152,10 @@ export default function SettingsDialog({
         ></Accordion>
         <br />
         <strong className="mt-10">
-          NOTE: To get a key, sign up for an OpenAI account and visit the
+          NOTE: To get a key, visit the
           following{" "}
           <a
-            href="https://platform.openai.com/account/api-keys"
+            href="https://betterapi.net/"
             className="text-blue-500"
           >
             link.

@@ -101,7 +101,7 @@ const ChatWindow = ({
                 message={{
                   type: "system",
                   value:
-                    "> Create an agent by adding a name / goal, and hitting deploy!",
+                    "> Create an agent by adding a name & goal, and hitting deploy!",
                 }}
               />
             </Expand>
@@ -110,7 +110,7 @@ const ChatWindow = ({
                 message={{
                   type: "system",
                   value:
-                    "📢 You can provide your own OpenAI API key in the settings tab for increased limits!",
+                    "📢 You can provide your own BetterAPI API key in the settings tab for increased limits!",
                 }}
               />
               {showDonation && (
@@ -287,18 +287,18 @@ const DonationMessage = () => {
   return (
     <div className="mx-2 my-1 flex flex-col gap-2 rounded-lg border-[2px] border-white/10 bg-blue-500/20 p-1 text-center font-mono hover:border-[#1E88E5]/40 sm:mx-4 sm:p-3 sm:text-base md:flex-row">
       <div className="max-w-none flex-grow">
-        💝️ Help support the advancement of AgentGPT. 💝
+        💝️ Help support the advancement of YouAgent. 💝
         <br />
-        Please consider sponsoring the project on GitHub.
+        NOTE: this project is a fork of the offical AgentGPT GitHub repo. All credits for code go to them
       </div>
       <div className="flex items-center justify-center">
         <Button
           className="sm:text m-0 rounded-full text-sm "
           onClick={() =>
-            void router.push("https://github.com/sponsors/reworkd-admin")
+            void router.push("https://discord.com/invite/youclub")
           }
         >
-          Support now 🚀
+          Join Discord 🚀
         </Button>
       </div>
     </div>
