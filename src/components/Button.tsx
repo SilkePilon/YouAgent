@@ -18,7 +18,9 @@ const Button = forwardRef(
   (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const [loading, setLoading] = useState(false);
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (props.loader == true) setLoading(true);
+      if (props.loader == true) {
+        setLoading(true);
+      }
 
       try {
         void Promise.resolve(props.onClick?.(e)).then();

@@ -19,9 +19,11 @@ export function useAuth(): Auth {
   const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (status != "authenticated" || !session?.user) return;
+    if (status != "authenticated" || !session?.user) {
+      return;
+    }
 
-    const user = session.user;
+    const {user} = session;
     z.string()
       .uuid()
       .parseAsync(user.email)

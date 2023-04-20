@@ -23,7 +23,9 @@ export function useAgent() {
   });
 
   const saveAgent = (data: SaveProps) => {
-    if (status === "authenticated") saveMutation.mutate(data);
+    if (status === "authenticated") {
+      saveMutation.mutate(data);
+    }
   };
 
   return {

@@ -127,13 +127,9 @@ class AutonomousAgent {
   }
 
   private maxLoops() {
-    const defaultLoops = !!this.session?.user.subscriptionId
-      ? DEFAULT_MAX_LOOPS_PAID
-      : DEFAULT_MAX_LOOPS_FREE;
+    const defaultLoops = this.session?.user.subscriptionId ? DEFAULT_MAX_LOOPS_PAID : DEFAULT_MAX_LOOPS_FREE;
 
-    return !!this.modelSettings.customApiKey
-      ? this.modelSettings.customMaxLoops || DEFAULT_MAX_LOOPS_CUSTOM_API_KEY
-      : defaultLoops;
+    return this.modelSettings.customApiKey ? this.modelSettings.customMaxLoops || DEFAULT_MAX_LOOPS_CUSTOM_API_KEY : defaultLoops;
   }
 
   async getInitialTasks(): Promise<string[]> {
