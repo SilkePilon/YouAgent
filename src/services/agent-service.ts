@@ -10,14 +10,18 @@ import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
 
 async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
-  const completion = await new LLMChain({
-    llm: createModel(modelSettings),
-    prompt: startGoalPrompt,
-  }).call({
-    goal,
-  });
-  console.log("Completion:" + (completion.text as string));
-  return extractTasks(completion.text as string, []);
+  // const completion = await new LLMChain({
+  //   llm: createModel(modelSettings),
+  //   prompt: startGoalPrompt,
+  // }).call({
+  //   goal,
+  // });
+  // const apikey = modelSettings.customApiKey === ""? modelSettings.customApiKey
+
+  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an autonomous task creation A called AgentGPT. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`)}&key=site`);
+  const completion = await response.json();
+  console.log("Completion:" + (completion.message as string));
+  return extractTasks(completion.message as string, []);
 }
 
 async function executeTaskAgent(
@@ -25,15 +29,18 @@ async function executeTaskAgent(
   goal: string,
   task: string
 ) {
-  const completion = await new LLMChain({
-    llm: createModel(modelSettings),
-    prompt: executeTaskPrompt,
-  }).call({
-    goal,
-    task,
-  });
+  // const completion = await new LLMChain({
+  //   llm: createModel(modelSettings),
+  //   prompt: executeTaskPrompt,
+  // }).call({
+  //   goal,
+  //   task,
+  // });
 
-  return completion.text as string;
+  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an autonomous task execution AI called AgentGPT. You have the following objective '${goal}'. You have the following tasks '${task}'. Execute the task and return the response as a string.`)}&key=site`);
+  const completion = await response.json();
+
+  return completion.message as string;
 }
 
 async function createTasksAgent(
@@ -44,17 +51,20 @@ async function createTasksAgent(
   result: string,
   completedTasks: string[] | undefined
 ) {
-  const completion = await new LLMChain({
-    llm: createModel(modelSettings),
-    prompt: createTasksPrompt,
-  }).call({
-    goal,
-    tasks,
-    lastTask,
-    result,
-  });
+  // const completion = await new LLMChain({
+  //   llm: createModel(modelSettings),
+  //   prompt: createTasksPrompt,
+  // }).call({
+  //   goal,
+  //   tasks,
+  //   lastTask,
+  //   result,
+  // });
 
-  return extractTasks(completion.text as string, completedTasks || []);
+  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an AI task creation agent. You have the following objective '${goal}'. You have the following incomplete tasks '${tasks}' and have just executed the following task '${lastTask}' and received the following result '${result}'. Based on this, create a new task to be completed by your AI system ONLY IF NEEDED such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse() and NOTHING ELSE`)}&key=site`);
+  const completion = await response.json();
+
+  return extractTasks(completion.message as string, completedTasks || []);
 }
 
 interface AgentService {
