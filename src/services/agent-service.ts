@@ -9,6 +9,24 @@ import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
 
+
+
+
+async function fetchData(text:string) {
+  const url = `https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(text)}&key=site`;
+  
+  while (true) {
+    const response = await fetch(url, {mode: 'cors'});
+    if (!response.ok) {
+      console.log(`Error: ${response.status} - ${response.statusText}`);
+      await new Promise(resolve => setTimeout(resolve, 60000)); // wait for 1 minute
+    } else {
+      const completion = await response.json();
+      return completion;
+    }
+  }
+}
+
 async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // const completion = await new LLMChain({
   //   llm: createModel(modelSettings),
@@ -18,10 +36,9 @@ async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // });
   // const apikey = modelSettings.customApiKey === ""? modelSettings.customApiKey
 
-  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an autonomous task creation A called AgentGPT. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`)}&key=site`);
-  const completion = await response.json();
-  console.log("Completion:" + (completion.message as string));
-  return extractTasks(completion.message as string, []);
+  const response = await fetchData(`You are an autonomous task creation A called AgentGPT. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`);
+  console.log("Completion:" + (response.message as string));
+  return extractTasks(response.message as string, []);
 }
 
 async function executeTaskAgent(
@@ -37,10 +54,9 @@ async function executeTaskAgent(
   //   task,
   // });
 
-  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an autonomous task execution AI called AgentGPT. You have the following objective '${goal}'. You have the following tasks '${task}'. Execute the task and return the response as a string.`)}&key=site`);
-  const completion = await response.json();
+  const response = await fetchData(`You are an autonomous task execution AI called AgentGPT. You have the following objective '${goal}'. You have the following tasks '${task}'. Execute the task and return the response as a string.`);
 
-  return completion.message as string;
+  return response.message as string;
 }
 
 async function createTasksAgent(
@@ -61,10 +77,9 @@ async function createTasksAgent(
   //   result,
   // });
 
-  const response = await fetch(`https://api.betterapi.net/youdotcom/chat?message=${encodeURIComponent(`You are an AI task creation agent. You have the following objective '${goal}'. You have the following incomplete tasks '${tasks}' and have just executed the following task '${lastTask}' and received the following result '${result}'. Based on this, create a new task to be completed by your AI system ONLY IF NEEDED such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse() and NOTHING ELSE`)}&key=site`);
-  const completion = await response.json();
+  const response = await fetchData(`You are an AI task creation agent. You have the following objective '${goal}'. You have the following incomplete tasks '${tasks}' and have just executed the following task '${lastTask}' and received the following result '${result}'. Based on this, create a new task to be completed by your AI system ONLY IF NEEDED such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse() and NOTHING ELSE`);
 
-  return extractTasks(completion.message as string, completedTasks || []);
+  return extractTasks(response.message as string, completedTasks || []);
 }
 
 interface AgentService {

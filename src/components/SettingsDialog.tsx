@@ -42,12 +42,6 @@ export const SettingsDialog: React.FC<{
   }
 
   const handleSave = () => {
-    if (!keyIsValid(settings.customApiKey)) {
-      alert(
-        "key is invalid, please ensure that you have set up billing in your OpenAI account"
-      );
-      return;
-    }
 
     setCustomSettings(settings);
     close();
@@ -124,7 +118,7 @@ export const SettingsDialog: React.FC<{
               <span className="ml-2">Key: </span>
             </>
           }
-          placeholder={"sk-..."}
+          placeholder={"..."}
           value={settings.customApiKey}
           onChange={(e) => updateSettings("customApiKey", e.target.value)}
         />

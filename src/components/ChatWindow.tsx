@@ -287,7 +287,7 @@ const ChatMessage = ({ message }: { message: Message }) => {
 
       {message.type == "thinking" && (
         <span className="italic text-zinc-400">
-          (Restart if this takes more than 30 seconds)
+          (Waiting for rate limit to pass...)
         </span>
       )}
 
