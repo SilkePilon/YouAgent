@@ -21,8 +21,7 @@ async function fetchData(text:string) {
       console.log(`Error: ${response.status} - ${response.statusText}`);
       await new Promise(resolve => setTimeout(resolve, 60000)); // wait for 1 minute
     } else {
-      const completion = await response.json();
-      return completion;
+      return await response.json();
     }
   }
 }

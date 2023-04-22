@@ -3,7 +3,9 @@ import type Stripe from "stripe";
 export const getCustomerId = (
   customer: string | Stripe.Customer | Stripe.DeletedCustomer | null
 ) => {
-  if (!customer) throw new Error("No customer found");
+  if (!customer) {
+    throw new Error("No customer found");
+  }
 
   switch (typeof customer) {
     case "string":
@@ -19,7 +21,9 @@ export const getCustomerEmail = async (
   stripe: Stripe,
   customer: string | Stripe.Customer | Stripe.DeletedCustomer | null
 ) => {
-  if (!customer) throw new Error("No customer found");
+  if (!customer) {
+    throw new Error("No customer found");
+  }
 
   let c = customer;
   if (typeof customer === "string") {
