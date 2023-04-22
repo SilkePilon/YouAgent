@@ -244,7 +244,7 @@ class AutonomousAgent {
     this.sendMessage({
       type: "system",
       value: !!this.modelSettings.customApiKey
-        ? `This agent has maxed out on loops. To save your wallet, this agent is shutting down. You can configure the number of loops in the advanced settings.`
+        ? `This agent has maxed out on loops. This agent is shutting down. You can configure the number of loops in the advanced settings.`
         : "We're sorry, because this is a demo, we cannot have our agents running for too long. Note, if you desire longer runs, please provide your own API key in Settings. Shutting down.",
     });
   }
@@ -314,14 +314,14 @@ const testConnection = async (modelSettings: ModelSettings) => {
 
 const getMessageFromError = (e: unknown) => {
   let message =
-    "ERROR accessing OpenAI APIs. Please check your API key or try again later";
+    "ERROR accessing BetterAPI. Please check your API key or try again later";
   if (axios.isAxiosError(e)) {
     const axiosError = e;
     if (axiosError.response?.status === 429) {
-      message = `ERROR using your OpenAI API key. You've exceeded your current quota, please check your plan and billing details.`;
+      message = `ERROR using your BetterAPI API key.`;
     }
     if (axiosError.response?.status === 404) {
-      message = `ERROR your API key does not have GPT-4 access. You must first join OpenAI's wait-list. (This is different from ChatGPT Plus)`;
+      message = `ERROR`;
     }
   } else {
     message = `ERROR retrieving initial tasks array. Retry, make your goal more clear, or revise your goal such that it is within our model's policies to run. Shutting Down.`;

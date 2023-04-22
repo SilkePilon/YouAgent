@@ -34,7 +34,7 @@ const Home: NextPage = () => {
   const agentUtils = useAgent();
 
   useEffect(() => {
-    const key = "agentgpt-modal-opened-new";
+    const key = "YouAgent-modal-opened-new";
     const savedModalData = localStorage.getItem(key);
 
     // Momentarily always run
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
 
   const proTitle = (
     <>
-      AgentGPT<span className="ml-1 text-amber-500/90">Pro</span>
+      YouAgent<span className="ml-1 text-amber-500/90">Pro</span>
     </>
   );
 
@@ -141,11 +141,11 @@ const Home: NextPage = () => {
               className="relative flex flex-col items-center font-mono"
             >
               <div className="flex flex-row items-start shadow-2xl">
+                <span className="text-4xl font-bold text-white xs:text-5xl sm:text-6xl">
+                  You
+                </span>
                 <span className="text-4xl font-bold text-[#C0C0C0] xs:text-5xl sm:text-6xl">
                   Agent
-                </span>
-                <span className="text-4xl font-bold text-white xs:text-5xl sm:text-6xl">
-                  GPT
                 </span>
                 <PopIn delay={0.5} className="sm:absolute sm:right-0 sm:top-2">
                   <Badge>Beta 🚀</Badge>
@@ -154,7 +154,7 @@ const Home: NextPage = () => {
               <div className="mt-1 text-center font-mono text-[0.7em] font-bold text-white">
                 <p>
                   Assemble, configure, and deploy autonomous AI Agents in your
-                  browser.
+                  browser. Using the power of YouChat
                 </p>
               </div>
             </div>
@@ -163,7 +163,7 @@ const Home: NextPage = () => {
               <ChatWindow
                 className="sm:mt-4"
                 messages={messages}
-                title={session?.user.subscriptionId ? proTitle : "AgentGPT"}
+                title={session?.user.subscriptionId ? proTitle : "YouAgent"}
                 showDonation={
                   status != "loading" && !session?.user.subscriptionId
                 }
@@ -198,7 +198,7 @@ const Home: NextPage = () => {
                   disabled={agent != null}
                   onChange={(e) => setName(e.target.value)}
                   onKeyDown={(e) => handleKeyPress(e)}
-                  placeholder="AgentGPT"
+                  placeholder="YouAgent"
                 />
               </Expand>
               <Expand delay={1.3}>

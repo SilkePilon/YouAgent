@@ -130,7 +130,7 @@ const Drawer = ({
           <DrawerItem
             icon={<FaGithub />}
             text="GitHub"
-            href="https://github.com/reworkd/AgentGPT"
+            href="https://github.com/SilkePilon/YouAgent"
             target="_blank"
           />
         </div>

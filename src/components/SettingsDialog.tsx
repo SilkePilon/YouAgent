@@ -60,30 +60,6 @@ export const SettingsDialog: React.FC<{
       <Input
         left={
           <>
-            <FaThermometerFull />
-            <span className="ml-2">Temp: </span>
-          </>
-        }
-        value={settings.customTemperature}
-        onChange={(e) =>
-          updateSettings("customTemperature", parseFloat(e.target.value))
-        }
-        type="range"
-        toolTipProperties={{
-          message:
-            "Higher values will make the output more random, while lower values make the output more focused and deterministic.",
-          disabled: false,
-        }}
-        attributes={{
-          min: 0,
-          max: 1,
-          step: 0.01,
-        }}
-      />
-      <br />
-      <Input
-        left={
-          <>
             <FaSyncAlt />
             <span className="ml-2">Loop #: </span>
           </>
@@ -105,31 +81,6 @@ export const SettingsDialog: React.FC<{
           step: 1,
         }}
       />
-      <br />
-      <Input
-        left={
-          <>
-            <FaCoins />
-            <span className="ml-2">Tokens: </span>
-          </>
-        }
-        value={settings.maxTokens ?? 400}
-        disabled={disabled}
-        onChange={(e) =>
-          updateSettings("maxTokens", parseFloat(e.target.value))
-        }
-        type="range"
-        toolTipProperties={{
-          message:
-            "Controls the maximum number of tokens used in each API call (higher value will make responses more detailed but cost more).",
-          disabled: false,
-        }}
-        attributes={{
-          min: 200,
-          max: 2000,
-          step: 100,
-        }}
-      />
     </>
   );
 
@@ -141,9 +92,7 @@ export const SettingsDialog: React.FC<{
       footerButton={<Button onClick={handleSave}>Save</Button>}
     >
       <p>
-        Here you can add your OpenAI API key. This will require you to pay for
-        your own OpenAI usage but give you greater access to AgentGPT! You can
-        additionally select any model OpenAI offers.
+        Here you can add your BetterAPI API key.
       </p>
       <br />
       <p
@@ -156,15 +105,14 @@ export const SettingsDialog: React.FC<{
         <FaExclamationCircle className="inline-block" />
         &nbsp;
         <b>
-          To use the GPT-4 model, you need to also provide the API key for
-          GPT-4. You can request for it&nbsp;
+          You can get an API key&nbsp;
           <a
-            href="https://openai.com/waitlist/gpt-4-api"
+            href="https://api.betterapi.net/"
             className="text-blue-500"
           >
             here
           </a>
-          . (ChatGPT Plus subscription will not work)
+          . (this does not work atm)
         </b>
       </p>
       <br />
@@ -180,21 +128,6 @@ export const SettingsDialog: React.FC<{
           value={settings.customApiKey}
           onChange={(e) => updateSettings("customApiKey", e.target.value)}
         />
-        <br className="md:inline" />
-        <Input
-          left={
-            <>
-              <FaMicrochip />
-              <span className="ml-2">Model:</span>
-            </>
-          }
-          type="combobox"
-          value={settings.customModelName}
-          onChange={() => null}
-          setValue={(e) => updateSettings("customModelName", e)}
-          attributes={{ options: GPT_MODEL_NAMES }}
-          disabled={disabled}
-        />
         <br className="hidden md:inline" />
         <Accordion
           child={advancedSettings}
@@ -202,15 +135,7 @@ export const SettingsDialog: React.FC<{
         ></Accordion>
         <br />
         <strong className="mt-10">
-          NOTE: To get a key, sign up for an OpenAI account and visit the
-          following{" "}
-          <a
-            href="https://platform.openai.com/account/api-keys"
-            className="text-blue-500"
-          >
-            link.
-          </a>{" "}
-          This key is only used in the current browser session
+          NOTE: this project is still in dev!
         </strong>
       </div>
     </Dialog>
