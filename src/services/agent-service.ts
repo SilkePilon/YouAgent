@@ -8,6 +8,16 @@ import type { ModelSettings } from "../utils/types";
 import { env } from "../env/client.mjs";
 import { LLMChain } from "langchain/chains";
 import { extractTasks } from "../utils/helpers";
+import axios from "axios";
+import {
+  DEFAULT_MAX_LOOPS_CUSTOM_API_KEY,
+  DEFAULT_MAX_LOOPS_FREE,
+  DEFAULT_MAX_LOOPS_PAID,
+} from "../utils/constants";
+import type { Session } from "next-auth";
+import type { Message } from "../types/agentTypes";
+import { v4 } from "uuid";
+import type { RequestBody } from "../utils/interfaces";
 
 
 
@@ -19,6 +29,7 @@ async function fetchData(text:string) {
     const response = await fetch(url, {mode: 'cors'});
     if (!response.ok) {
       console.log(`Error: ${response.status} - ${response.statusText}`);
+      this.renderMessage
       await new Promise(resolve => setTimeout(resolve, 60000)); // wait for 1 minute
     } else {
       return await response.json();
