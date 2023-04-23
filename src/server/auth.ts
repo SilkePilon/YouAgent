@@ -32,21 +32,21 @@ declare module "next-auth" {
 }
 
 const providers = [
-  GoogleProvider({
-    clientId: serverEnv.GOOGLE_CLIENT_ID ?? "",
-    clientSecret: serverEnv.GOOGLE_CLIENT_SECRET ?? "",
-    allowDangerousEmailAccountLinking: true,
-  }),
+  // GoogleProvider({
+  //   clientId: serverEnv.GOOGLE_CLIENT_ID ?? "",
+  //   clientSecret: serverEnv.GOOGLE_CLIENT_SECRET ?? "",
+  //   allowDangerousEmailAccountLinking: true,
+  // }),
   GithubProvider({
     clientId: serverEnv.GITHUB_CLIENT_ID ?? "",
     clientSecret: serverEnv.GITHUB_CLIENT_SECRET ?? "",
     allowDangerousEmailAccountLinking: true,
   }),
-  DiscordProvider({
-    clientId: serverEnv.DISCORD_CLIENT_ID ?? "",
-    clientSecret: serverEnv.DISCORD_CLIENT_SECRET ?? "",
-    allowDangerousEmailAccountLinking: true,
-  }),
+  // DiscordProvider({
+  //   clientId: serverEnv.DISCORD_CLIENT_ID ?? "",
+  //   clientSecret: serverEnv.DISCORD_CLIENT_SECRET ?? "",
+  //   allowDangerousEmailAccountLinking: true,
+  // }),
 ];
 
 /**
