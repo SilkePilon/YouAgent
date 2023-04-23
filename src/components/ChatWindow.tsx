@@ -63,10 +63,8 @@ const ChatWindow = ({
 
   useEffect(() => {
     // Scroll to bottom on re-renders
-    if (scrollToBottom && scrollRef && scrollRef.current) {
-      if (!hasUserScrolled) {
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-      }
+    if (scrollToBottom && scrollRef && scrollRef.current && !hasUserScrolled) {
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   });
 
@@ -368,7 +366,7 @@ const getMessagePrefix = (message: Message) => {
     case "thinking":
       return "Thinking...";
     case "action":
-      return message.info ? message.info : "Executing:";
+      return message.info || "Executing:";
   }
 };
 

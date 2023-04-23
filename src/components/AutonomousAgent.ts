@@ -131,13 +131,9 @@ class AutonomousAgent {
   }
 
   private maxLoops() {
-    const defaultLoops = !!this.session?.user.subscriptionId
-      ? DEFAULT_MAX_LOOPS_PAID
-      : DEFAULT_MAX_LOOPS_FREE;
+    const defaultLoops = this.session?.user.subscriptionId ? DEFAULT_MAX_LOOPS_PAID : DEFAULT_MAX_LOOPS_FREE;
 
-    return !!this.modelSettings.customApiKey
-      ? this.modelSettings.customMaxLoops || DEFAULT_MAX_LOOPS_CUSTOM_API_KEY
-      : defaultLoops;
+    return this.modelSettings.customApiKey ? this.modelSettings.customMaxLoops || DEFAULT_MAX_LOOPS_CUSTOM_API_KEY : defaultLoops;
   }
 
   async getInitialTasks(): Promise<string[]> {
@@ -240,9 +236,7 @@ class AutonomousAgent {
   sendLoopMessage() {
     this.sendMessage({
       type: "system",
-      value: !!this.modelSettings.customApiKey
-        ? `This agent has maxed out on loops. This agent is shutting down. You can configure the number of loops in the advanced settings.`
-        : "We're sorry, because this is a demo, we cannot have our agents running for too long. Note, if you desire longer runs, please provide your own API key in Settings. Shutting down.",
+      value: this.modelSettings.customApiKey ? `This agent has maxed out on loops. This agent is shutting down. You can configure the number of loops in the advanced settings.` : "We're sorry, because this is a demo, we cannot have our agents running for too long. Note, if you desire longer runs, please provide your own API key in Settings. Shutting down.",
     });
   }
 

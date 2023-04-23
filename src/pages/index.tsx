@@ -87,11 +87,8 @@ const Home: NextPage = () => {
       | React.KeyboardEvent<HTMLInputElement>
       | React.KeyboardEvent<HTMLTextAreaElement>
   ) => {
-    if (e.key === "Enter" && !disableDeployAgent) {
-      if (!e.shiftKey) {
-        // Only Enter is pressed, execute the function
-        handleNewGoal();
-      }
+    if (e.key === "Enter" && !disableDeployAgent && !e.shiftKey) {
+          handleNewGoal();
     }
   };
 
