@@ -71,7 +71,7 @@ export const SettingsDialog: React.FC<{
         }}
         attributes={{
           min: 1,
-          max: 100,
+          max: 20,
           step: 1,
         }}
       />

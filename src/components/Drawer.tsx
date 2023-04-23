@@ -20,6 +20,16 @@ import { api } from "../utils/api";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
+
+const date = () => {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  const yyyy = today.getFullYear();
+  const dateobj = mm + '/' + dd + '/' + yyyy;
+  return dateobj
+}
+
 const Drawer = ({
   showHelp,
   showSettings,
@@ -87,12 +97,13 @@ const Drawer = ({
               <FaBars />
             </button>
           </div>
+          
           <ul className="flex flex-col gap-2 overflow-auto">
             {userAgents.map((agent, index) => (
               <DrawerItem
                 key={index}
                 icon={<FaRobot />}
-                text={agent.name}
+                text={agent.name+ " - " + date()}
                 className="w-full"
                 onClick={() => void router.push(`/agent?id=${agent.id}`)}
               />
