@@ -69,7 +69,7 @@ export const authOptions: NextAuthOptions = {
   providers: providers,
   theme: {
     colorScheme: "dark",
-    logo: "https://agentgpt.reworkd.ai/logo-white.svg",
+    logo: "https://raw.githubusercontent.com/SilkePilon/YouAgent/main/public/youchat_gradient.svg",
   },
 };
 
