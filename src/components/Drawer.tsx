@@ -137,6 +137,12 @@ const Drawer = ({
             <AuthItem session={session} signIn={signIn} signOut={signOut} />
           )}
           <DrawerItem
+            icon={<FaCog />}
+            text="Get API key"
+            href="https://api.betterapi.net/gen"
+            target="_blank"
+          />
+          <DrawerItem
             icon={<FaQuestionCircle />}
             text="Help"
             onClick={showHelp}

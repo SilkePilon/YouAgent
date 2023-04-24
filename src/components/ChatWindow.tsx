@@ -109,7 +109,7 @@ const ChatWindow = ({
                 message={{
                   type: "system",
                   value:
-                    "📢 You can provide your own BetterAPI API key in the settings tab for increased limits! (does not work atm)",
+                    "📢 You can provide your own BetterAPI API key in the settings tab for increased limits!",
                 }}
               />
               {showDonation && (

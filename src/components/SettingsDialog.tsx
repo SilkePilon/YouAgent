@@ -106,7 +106,7 @@ export const SettingsDialog: React.FC<{
           >
             here
           </a>
-          . (this does not work atm)
+          .
         </b>
       </p>
       <br />
