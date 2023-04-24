@@ -36,21 +36,11 @@ Whether you're looking to automate a process, improve efficiency, or simply expl
 Whether you're a developer, a business owner, or just someone curious about the possibilities of AI, YouAgent is the perfect tool to help you get started. With its intuitive interface, powerful features, and endless customization options, YouAgent makes it easy to create, deploy, and manage your own autonomous AI agent. So why wait? Start exploring the possibilities of AI with YouAgent today!
 
 
-## Key Features
-* Bypass CloudFlare
-* Interact with YouChat
-* Find code examples
-* Server ready
-  - Supports non-gui operating systems.
-* Cross platform
-  - Windows, macOS and Linux ready.
-
-
-## 👨‍🚀 Getting Started
+## Getting Started
 
 ### 🐳 Docker Setup
 
-The easiest way to run AgentGPT locally is by using docker.
+The easiest way to run YouAgent locally is by using docker.
 A convenient setup script is provided to help you get started.
 
 ```bash
@@ -59,7 +49,7 @@ A convenient setup script is provided to help you get started.
 
 ### 👷 Local Development Setup
 
-If you wish to develop AgentGPT locally, the easiest way is to
+If you wish to develop YouAgent locally, the easiest way is to
 use the provided setup script.
 
 ```bash
@@ -72,24 +62,24 @@ use the provided setup script.
 
 1. Fork this project:
 
-- [Click here](https://github.com/reworkd/AgentGPT/fork).
+- [Click here](https://github.com/SilkePilon/YouAgent/fork).
 
 2. Clone the repository:
 
 ```bash
-git clone git@github.com:YOU_USER/AgentGPT.git
+git clone git@github.com:YOU_USER/YouAgent.git
 ```
 
 3. Install dependencies:
 
 ```bash
-cd AgentGPT
+cd YouAgent
 npm install
 ```
 
 4. Create a **.env** file with the following content:
 
-> 🚧 The environment variables must match the following [schema](https://github.com/reworkd/AgentGPT/blob/main/src/env/schema.mjs).
+> 🚧 The environment variables must match the following [schema](https://github.com/SilkePilon/YouAgent/blob/main/src/env/schema.mjs).
 
 ```bash
 # Deployment Environment:
@@ -123,17 +113,16 @@ npm run dev
 
 ### 🚀 GitHub Codespaces
 
-Set up AgentGPT in the cloud immediately by using [GitHub Codespaces](https://github.com/features/codespaces).
+Set up YouAgent in the cloud immediately by using [GitHub Codespaces](https://github.com/features/codespaces).
 
 1. From the GitHub repo, click the green "Code" button and select "Codespaces".
 2. Create a new Codespace or select a previous one you've already created.
 3. Codespaces opens in a separate tab in your browser.
 4. In terminal, run `bash ./setup.sh --local`
-5. When prompted in terminal, add your OpenAI API key.
-6. Click "Open in browser" when the build process completes.
+5. Click "Open in browser" when the build process completes.
 
-- To shut AgentGPT down, enter Ctrl+C in Terminal.
-- To restart AgentGPT, run `npm run dev` in Terminal.
+- To shut YouAgent down, enter Ctrl+C in Terminal.
+- To restart YouAgent, run `npm run dev` in Terminal.
 
 Run the project 🥳
 
