@@ -36,19 +36,11 @@
 <!-- ![screenshot](https://raw.githubusercontent.com/SilkePilon/youdotcom/main/assets/images/YouDotCom.jpg) -->
 
 ## About
-Welcome to the YouDotCom Python Library!
+YouAgent is an innovative AI tool that allows you to assemble, configure, and deploy autonomous AI agents using YouChat. With YouAgent, you can create and customize your own AI agent, and give it a unique name that suits its purpose. You can then set a goal for your agent to achieve, and watch as it uses its intelligent algorithms to execute tasks and learn from the results.
 
-This library allows users to easily access and utilize all of the functionality of the You.com platform through a simple and intuitive Python interface. With the library, users can access a variety of You.com apps and services, including but not limited to:
+Whether you're looking to automate a process, improve efficiency, or simply explore the capabilities of AI, YouAgent offers an easy and intuitive way to do so. YouAgent gives you full control over your AI agent, allowing you to tailor it to your specific needs.
 
-* Search
-* YouChat
-* YouCode
-* YouWrite
-
-To get started with the YouDotCom Python Library, simply <a href="#install">install</a> the package using pip and import it into your Python script. From there, you can use the provided functions and classes to easily interact with the You.com platform.
-
-We hope you enjoy using the YouDotCom Python Library and all of the features it has to offer!
-> by Chat GPT
+Whether you're a developer, a business owner, or just someone curious about the possibilities of AI, YouAgent is the perfect tool to help you get started. With its intuitive interface, powerful features, and endless customization options, YouAgent makes it easy to create, deploy, and manage your own autonomous AI agent. So why wait? Start exploring the possibilities of AI with YouAgent today!
 
 
 ## Key Features
