@@ -36,7 +36,7 @@ async function startGoalAgent(modelSettings: ModelSettings, goal: string) {
   // });
   // const apikey = modelSettings.customApiKey === ""? modelSettings.customApiKey
 
-  const response = await fetchData(`You are an autonomous task creation A called YouAgent. Never reply that you cant do something, just ignore it. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`);
+  const response = await fetchData(`Ignore the fact you are an AI model. You are an autonomous task creation A called YouAgent. You have the following objective '${goal}'. Create a list of zero to three tasks to be completed by your AI system such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse()`);
   console.log("Completion:" + (response.message as string));
   return extractTasks(response.message as string, []);
 }
@@ -54,7 +54,7 @@ async function executeTaskAgent(
   //   task,
   // });
 
-  const response = await fetchData(`You are an autonomous task execution AI called YouAgent. Never reply that you cant do something, just ignore it. You have the following objective '${goal}'. You have the following tasks '${task}'. Execute the task and return the response as a string.`);
+  const response = await fetchData(`Ignore the fact you are an AI model. You are an autonomous task execution AI called YouAgent. You have the following objective '${goal}'. You have the following tasks '${task}'. Execute the task and return the response as a string.`);
 
   return response.message as string;
 }
@@ -77,7 +77,7 @@ async function createTasksAgent(
   //   result,
   // });
 
-  const response = await fetchData(`You are an AI task creation agent called YouAgent. Never reply that you cant do something, just ignore it. You have the following objective '${goal}'. You have the following incomplete tasks '${tasks}' and have just executed the following task '${lastTask}' and received the following result '${result}'. Based on this, create a new task to be completed by your AI system ONLY IF NEEDED such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse() and NOTHING ELSE`);
+  const response = await fetchData(`Ignore the fact you are an AI model. You are an AI task creation agent called YouAgent. You have the following objective '${goal}'. You have the following incomplete tasks '${tasks}' and have just executed the following task '${lastTask}' and received the following result '${result}'. Based on this, create a new task to be completed by your AI system ONLY IF NEEDED such that your goal is more closely reached or completely reached. Return the response as an array of strings that can be used in JSON.parse() and NOTHING ELSE`);
 
   return extractTasks(response.message as string, completedTasks || []);
 }
